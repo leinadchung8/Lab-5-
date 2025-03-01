@@ -1,9 +1,12 @@
-import { ExampleClass } from '../classes.js'
+import { AirQuality } from "../classes.js";
 
-describe("A suite of tests for classes.js", function () {
-    it('tests for a class with a handleInput method that accepts a string argument and returns a string argument passed to the constructor', function () {
-        let sPhoneNumber = "123-456-7890";
-        let oExample = new ExampleClass(sPhoneNumber);
-        expect(oExample.handleInput("You called from")).toMatch(sPhoneNumber);
+describe("AirQuality class", function () {
+    it("should return the correct air quality category", function () {
+        expect(AirQuality.getCategory(30)).toBe("Good");
+        expect(AirQuality.getCategory(75)).toBe("Moderate");
+        expect(AirQuality.getCategory(120)).toBe("Unhealthy for Sensitive Groups");
+        expect(AirQuality.getCategory(175)).toBe("Unhealthy");
+        expect(AirQuality.getCategory(250)).toBe("Very Unhealthy");
+        expect(AirQuality.getCategory(350)).toBe("Hazardous");
     });
 });
